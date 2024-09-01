@@ -31391,8 +31391,8 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
     exports.__info__.version = '2.0.0';
-    exports.__info__.date = '2024-09-01T15:48:06.757Z';
-    exports.__info__.hash = '7e878d8';
+    exports.__info__.date = '2024-09-01T15:51:10.148Z';
+    exports.__info__.hash = '26f34a7';
 
 })(this.o_spreadsheet = this.o_spreadsheet || {}, owl);
 //# sourceMappingURL=o_spreadsheet.js.map

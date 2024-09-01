@@ -4,7 +4,7 @@ A lightweight, web-based spreadsheet application.
 
 ## 📸 Screenshots
 
-<img src="screenshots/1.png" />
+<img src="screenshots/1.png" /> 
 <img src="screenshots/2.png" />
 
 ## ✨ Features
