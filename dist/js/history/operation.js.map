@@ -1,0 +1,1 @@
+{"version":3,"file":"operation.js","sourceRoot":"","sources":["../../../src/history/operation.ts"],"names":[],"mappings":"AAEA;;;;;;;;;GASG;AACH,MAAM,OAAO,SAAS;IACpB,YAAqB,EAAO,EAAW,IAAO;QAAzB,OAAE,GAAF,EAAE,CAAK;QAAW,SAAI,GAAJ,IAAI,CAAG;IAAG,CAAC;IAElD,WAAW,CAAC,cAAiC;QAC3C,OAAO,IAAI,SAAS,CAAC,IAAI,CAAC,EAAE,EAAE,cAAc,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC,CAAC;IAC3D,CAAC;CACF"}

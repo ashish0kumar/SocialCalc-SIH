@@ -1,0 +1,111 @@
+import { Component, onMounted, onWillUpdateProps, useState, xml } from "@odoo/owl";
+import { functionRegistry } from "../../functions/index";
+import { Registry } from "../../registry";
+import { css } from "../helpers/css";
+const functions = functionRegistry.content;
+const providerRegistry = new Registry();
+providerRegistry.add("functions", () => {
+    return Object.keys(functions).map((key) => {
+        return {
+            text: key,
+            description: functions[key].description,
+        };
+    });
+});
+// -----------------------------------------------------------------------------
+// Autocomplete DropDown component
+// -----------------------------------------------------------------------------
+const TEMPLATE = xml /* xml */ `
+  <div t-att-class="{'o-autocomplete-dropdown':state.values.length}"
+       t-att-style="state.values.length > 0 ? props.borderStyle : null"
+    >
+    <t t-foreach="state.values" t-as="v" t-key="v.text">
+        <div t-att-class="{'o-autocomplete-value-focus': state.selectedIndex === v_index}" t-on-click.stop.prevent="() => this.fillValue(v_index)">
+             <div class="o-autocomplete-value" t-esc="v.text"/>
+             <div class="o-autocomplete-description" t-esc="v.description" t-if="state.selectedIndex === v_index"/>
+        </div>
+    </t>
+  </div>`;
+css /* scss */ `
+  .o-autocomplete-dropdown {
+    pointer-events: auto;
+    background-color: #fff;
+    & > div:hover {
+      background-color: #f2f2f2;
+    }
+    .o-autocomplete-value-focus {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      padding: 1px 0 5px 5px;
+      .o-autocomplete-description {
+        padding: 0 0 0 5px;
+        font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+`;
+export class TextValueProvider extends Component {
+    constructor() {
+        super(...arguments);
+        this.state = useState({
+            values: [],
+            selectedIndex: 0,
+        });
+    }
+    setup() {
+        onMounted(() => this.filter(this.props.search));
+        onWillUpdateProps((nextProps) => this.checkUpdateProps(nextProps));
+        this.props.exposeAPI({
+            getValueToFill: () => this.getValueToFill(),
+            moveDown: () => this.moveDown(),
+            moveUp: () => this.moveUp(),
+        });
+    }
+    checkUpdateProps(nextProps) {
+        if (nextProps.search !== this.props.search) {
+            this.filter(nextProps.search);
+        }
+    }
+    async filter(searchTerm) {
+        const provider = providerRegistry.get(this.props.provider);
+        let values = provider();
+        if (this.props.filter) {
+            values = this.props.filter(searchTerm, values);
+        }
+        else {
+            values = values
+                .filter((t) => t.text.toUpperCase().startsWith(searchTerm.toUpperCase()))
+                .sort((l, r) => (l.text < r.text ? -1 : l.text > r.text ? 1 : 0));
+        }
+        this.state.values = values.slice(0, 10);
+        this.state.selectedIndex = 0;
+    }
+    fillValue(index) {
+        this.state.selectedIndex = index;
+        this.props.onCompleted(this.getValueToFill());
+    }
+    moveDown() {
+        this.state.selectedIndex = (this.state.selectedIndex + 1) % this.state.values.length;
+    }
+    moveUp() {
+        this.state.selectedIndex--;
+        if (this.state.selectedIndex < 0) {
+            this.state.selectedIndex = this.state.values.length - 1;
+        }
+    }
+    getValueToFill() {
+        if (this.state.values.length) {
+            return this.state.values[this.state.selectedIndex].text;
+        }
+        return undefined;
+    }
+}
+TextValueProvider.template = TEMPLATE;
+//# sourceMappingURL=autocomplete_dropdown.js.map
