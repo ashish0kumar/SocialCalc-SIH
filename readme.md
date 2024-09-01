@@ -14,7 +14,7 @@ A lightweight, web-based spreadsheet application.
 
 ## 🚀 Getting Started
 
-Follow these steps to get the Google Sheets Clone up and running on your local machine.
+Follow these steps to get the project up and running on your local machine.
 
 ### Prerequisites
 
@@ -32,7 +32,7 @@ git clone https://github.com/ashish0kumar/SocialCalc-SIH.git
 - Navigate to the project directory:
 
 ```bash
-cd google-sheets-clone
+cd SocialCalc-SIH
 ```
 
 - Install the dependencies:
@@ -44,13 +44,12 @@ npm install
 - Start the development server:
 
 ```bash
-npm start
+npm run build
+npm run dev
 ```
 
 ## 📝 Usage
-- Open your browser and navigate to http://localhost:3000 to start using the Google Sheets Clone.
-    
-- Begin creating, editing, and managing your spreadsheets!
+- Open your browser and navigate to http://localhost:8080/demo to begin creating, editing, and managing your spreadsheets!
 
 ## 🤝 Contributing
 
