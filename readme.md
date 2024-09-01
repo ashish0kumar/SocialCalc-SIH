@@ -4,12 +4,8 @@ A lightweight, web-based spreadsheet application.
 
 ## 📸 Screenshots
 
-<div style="display: flex">
-
-<img width="48%" src="screenshots/1.png" />
-<img width="48%" src="screenshots/2.png" />
-
-</div>
+<img src="screenshots/1.png" />
+<img src="screenshots/2.png" />
 
 ## ✨ Features
 
