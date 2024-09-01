@@ -6,8 +6,8 @@ A lightweight, web-based spreadsheet application.
 
 <div style="display: flex">
 
-<img width="50%" src="screenshots/1.png" />
-<img width="50%" src="screenshots/2.png" />
+<img width="48%" src="screenshots/1.png" />
+<img width="48%" src="screenshots/2.png" />
 
 </div>
 
