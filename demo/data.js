@@ -1,5 +1,5 @@
 /**
- * We export here two datasets, useful to test and play with o-spreadsheet:
+ * We export here two datasets, useful to test and play:
  *
  * - a demo dataset (demoData)
  * . a perf focused dataset (created by function makeLargeDataset)
@@ -15,11 +15,9 @@ export const demoData = {
       cols: { 1: {}, 3: {} },
       rows: {},
       cells: {
-        A21: { content: "[Sheet2 => B2:](o-spreadsheet://Sheet2)" },
-        B2: { content: "[Owl is awesome](https://github.com/odoo/owl)", style: 1 },
+        B2: { content: "Hello World", style: 1 },
         B4: { content: "Numbers", style: 4 },
         B21: { content: "=Sheet2!B2", style: 7 },
-        A23: { content: "https://odoo.com" },
         C1: { content: "CF =42" },
         C4: { content: "12.4" },
         C5: { content: "42" },
