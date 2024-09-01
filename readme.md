@@ -2,6 +2,11 @@
 
 A lightweight, web-based spreadsheet application.
 
+## 📸 Screenshots
+
+![screenshot1](screenshots/1.png)
+![screenshot2](screenshots/2.png)
+
 ## ✨ Features
 
 - 🌐 Web-based Interface
