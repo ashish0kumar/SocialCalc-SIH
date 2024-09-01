@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+.vscode/
+dist/
+.npmrc
+/coverage/
+logs/
+
+debug.log
+.git.cache
